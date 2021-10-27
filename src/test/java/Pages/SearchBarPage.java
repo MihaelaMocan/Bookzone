@@ -27,6 +27,7 @@ public class SearchBarPage {
         elementMethod = new ElementMethod(driver);
         pageMethod = new PageMethod(driver);
     }
+
     public SearchBarPage searchElement() {
         elementMethod.clickElement(searchElement);
         elementMethod.fillElement(searchElement, "Harry Potter");

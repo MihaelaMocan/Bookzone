@@ -55,4 +55,13 @@ public class ElementMethod {
             e.printStackTrace();
         }
     }
+
+    public void clearInput(WebElement element) {
+        waitUntillElementVisible(element);
+        element.clear();
+    }
+
+    public void pageBack() {
+        driver.navigate().back();
+    }
 }

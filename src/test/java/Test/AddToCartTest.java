@@ -60,7 +60,7 @@ public class AddToCartTest extends Base {
     @Test
     public void testAddToCartRandomBooks() {
         //todo numarul sa vina din fisieru de configurari
-        List<String> title = addToCartPage.goToBooks().addToCartRandomBooks(10);
+        List<String> title = addToCartPage.goToBooks().addToCartRandomBooks(2);
         addToCartPage.goToCart().validateTitlesExist(title);
 
 

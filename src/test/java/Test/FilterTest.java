@@ -3,7 +3,6 @@ package Test;
 import Base.Base;
 import HelpMethod.ElementMethod;
 import HelpMethod.PageMethod;
-import Pages.AddToCartPage;
 import Pages.FilterPage;
 import Property.PropertyFile;
 import org.junit.Before;
@@ -25,11 +24,24 @@ public class FilterTest extends Base {
     }
     @Test
     public void testFilterPrice() {
-        //todo upper si lower limit sa vina din fisieru de configurari
-        int lowerLimit = 50;
-        int upperLimit = 100;
-        filterPage.goToFilter().selectPriceRange(lowerLimit, upperLimit);
-        filterPage.validatePriceRange(lowerLimit, upperLimit);
+        String lower = propertyFile.getValueByKey("priceLowerLimit");
+        String upper = propertyFile.getValueByKey("priceUpperLimit");
+
+        filterPage.goToFilter().selectPriceRange(lower, upper);
+        elementMethod.threadSleep();
+        filterPage.validatePriceRange(lower, upper);
 
     }
+
+    @Test
+    public void testEditura() {
+        String editura = propertyFile.getValueByKey("editura");
+        filterPage.goToFilter().cautaEditura(editura).clickCheckbox().clickOnBooksAndValidateEditura(editura,3);
+        elementMethod.threadSleep();
+    }
+
+
+
+
+
 }

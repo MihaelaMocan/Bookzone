@@ -4,6 +4,7 @@ import Pages.AddToCartPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class BookzoneNavigatePage {
 
@@ -12,6 +13,7 @@ public class BookzoneNavigatePage {
 
     public BookzoneNavigatePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
         this.elementMethod = new ElementMethod(driver);
     }
 
@@ -19,6 +21,7 @@ public class BookzoneNavigatePage {
     private WebElement allBooksElement;
     @FindBy(xpath = "//a[@href='/cos/produse']")
     private WebElement cartElement;
+
 
 
     public BookzoneNavigatePage goToBooks() {

@@ -34,7 +34,6 @@ public class AddToCartPage {
     private List<WebElement> moreBooksElemenets;
     @FindBy(xpath = "//a[@class='btn-details-back']")
     private WebElement continuaElements;
-
     @FindBy(css = "div.cart1__details div.cart1__item div.cart1__price.cart1__price--mobile a.cart1__price__remove")
     private List<WebElement> removeAllBooks;
     @FindBy(css = "a.btn.btn-specs2")
