@@ -32,11 +32,20 @@ public class SigninTest extends Base {
 
         String emailValue = propertyFile.getValueByKey("LoginMail");
         String passwordValue = propertyFile.getValueByKey("LoginPassword");
+        signinPage.stepsToSignin();
+        signinPage.signInEmailFill(emailValue).signInPassword(passwordValue);
+    }
+
+    @Test
+    public void invalidEmailTest() {
+        String emailValue = propertyFile.getValueByKey("InvalidLoginMail");
 
         signinPage.stepsToSignin();
-        signinPage.SigninProcess(emailValue, passwordValue);
-
-
+        signinPage.signInEmailFill(emailValue);
+        String expected = "Email-ul nu este corect.";
+        signinPage.validateErrorMessage(expected);
     }
+
+
 
 }

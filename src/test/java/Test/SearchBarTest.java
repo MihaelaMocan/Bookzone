@@ -4,18 +4,9 @@ import Base.Base;
 import HelpMethod.ElementMethod;
 import HelpMethod.PageMethod;
 import Pages.SearchBarPage;
-import Pages.SigninPage;
 import Property.PropertyFile;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
 
 public class SearchBarTest extends Base {
     public ElementMethod elementMethod;
@@ -36,7 +27,13 @@ public class SearchBarTest extends Base {
         pageMethod.validateTitle(expectedTitle);
         pageMethod.validateUrl("https://bookzone.ro/");
 
-        String bookValue = propertyFile.getValueByKey("book");
-        searchBarPage.searchElement();
+        String bookTitle = propertyFile.getValueByKey("book");
+        searchBarPage.searchBookName(bookTitle).validateBookTitleFound(bookTitle);
+    }
+
+    @Test
+    public void invalidInputSearchbarTest() {
+        String invalidBook=propertyFile.getValueByKey("invalidBook");
+        searchBarPage.searchBookName(invalidBook).validateNoBookFound();
     }
 }

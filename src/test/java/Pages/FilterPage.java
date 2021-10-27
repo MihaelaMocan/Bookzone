@@ -59,7 +59,6 @@ public class FilterPage {
     }
 
     public void validatePriceRange(String lowerLimit, String upperLimit) {
-      //  List<WebElement> elements = driver.findElements(By.cssSelector("p.filters__item__price--new"));
         elementMethod.waitUntillElementVisibleAllElements(priceElements);
         for (WebElement priceElement : priceElements) {
             String price = priceElement.getText().replace(" Lei","");

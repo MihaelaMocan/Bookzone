@@ -38,6 +38,9 @@ public class ElementMethod {
     public  void waitUntillElementVisibleAllElements(List<WebElement> element){
         new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOfAllElements(element));
     }
+    public  void waitUntillElementVisibleAllElements(List<WebElement> element, int waitingSecond){
+        new WebDriverWait(driver,waitingSecond).until(ExpectedConditions.visibilityOfAllElements(element));
+    }
     public void clickAcceptIfPresent(){
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
         List<WebElement> elements = driver.findElements(By.cssSelector("div.cookies_buton a"));

@@ -38,32 +38,20 @@ public class AddToCartTest extends Base {
         addToCartPage.goToCart().validateTitlesExist(titles);
         addToCartPage.removeAllSelectedBooks();
         addToCartPage.continuaCumparaturi();
-
-
-
-        //validate cart
-        //random book
-        //addToCartPage.goToCart().deleteOrder();
     }
 
     @Test
     public void testAddToCartMultipleBooks() {
-        //todo numarul sa vina din fisieru de configurari
         List<String> titles = addToCartPage.goToBooks().addMultipleBooks(3);
-
         addToCartPage.goToCart().validateTitlesExist(titles);
         addToCartPage.removeAllSelectedBooks();
         addToCartPage.continuaCumparaturi();
-
     }
 
     @Test
     public void testAddToCartRandomBooks() {
-        //todo numarul sa vina din fisieru de configurari
         List<String> title = addToCartPage.goToBooks().addToCartRandomBooks(2);
         addToCartPage.goToCart().validateTitlesExist(title);
-
-
     }
 
 }

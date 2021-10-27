@@ -30,7 +30,6 @@ public class FilterTest extends Base {
         filterPage.goToFilter().selectPriceRange(lower, upper);
         elementMethod.threadSleep();
         filterPage.validatePriceRange(lower, upper);
-
     }
 
     @Test

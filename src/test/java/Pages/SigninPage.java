@@ -2,6 +2,7 @@ package Pages;
 
 import HelpMethod.ElementMethod;
 import HelpMethod.PageMethod;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +26,9 @@ public class SigninPage {
     private WebElement passwordElement;
     @FindBy(xpath = "//input[@value='Login']")
     private WebElement loginButtonElement;
+    @FindBy(css = "div.err-login")
+    private WebElement errorMessageElement;
+
 
     public SigninPage(WebDriver driver) {
         this.driver = driver;
@@ -37,11 +41,21 @@ public class SigninPage {
         elementMethod.clickElement(intraInContElement);
         return this;
     }
-    public SigninPage SigninProcess(String email, String password) {
+    public SigninPage signInEmailFill(String email) {
         elementMethod.fillElement(emailElement, email);
         elementMethod.clickElement(submitElement);
+        return this;
+    }
+
+    public SigninPage signInPassword(String password) {
         elementMethod.fillElement(passwordElement,password);
         elementMethod.clickElement(loginButtonElement);
-        return this;
+        return  this;
+    }
+
+    public void validateErrorMessage(String expected) {
+       elementMethod.waitUntillElementVisible(errorMessageElement);
+       String actual = errorMessageElement.getText();
+        Assert.assertEquals(expected, actual);
     }
 }
