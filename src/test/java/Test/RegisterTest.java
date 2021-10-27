@@ -5,14 +5,16 @@ import HelpMethod.ElementMethod;
 import HelpMethod.PageMethod;
 import Pages.RegisterPage;
 import Property.PropertyFile;
+import org.junit.Before;
 import org.junit.Test;
 
-public class Register extends Base {
+public class RegisterTest extends Base {
     public PageMethod pageMethod;
     public ElementMethod elementMethod;
     public PropertyFile propertyFile;
     public RegisterPage registerPage;
 
+    @Before
     public void setUp(){
         pageMethod = new PageMethod(driver);
         elementMethod = new ElementMethod(driver);
@@ -21,7 +23,6 @@ public class Register extends Base {
     }
     @Test
     public void testNewAccount() {
-        setUp();
         String expectedTitle = propertyFile.getValueByKey("librarieOnline");
         pageMethod.validateTitle(expectedTitle);
 

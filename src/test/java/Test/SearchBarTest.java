@@ -17,12 +17,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class SearchBar extends Base {
+public class SearchBarTest extends Base {
     public ElementMethod elementMethod;
     public PageMethod pageMethod;
     public PropertyFile propertyFile;
     public SearchBarPage searchBarPage;
 
+    @Before
     public void setUp(){
         elementMethod = new ElementMethod(driver);
         pageMethod = new PageMethod(driver);
@@ -31,7 +32,6 @@ public class SearchBar extends Base {
     }
     @Test
     public void testSearchBar()  {
-        setUp();
         String expectedTitle = propertyFile.getValueByKey("librarieOnline");
         pageMethod.validateTitle(expectedTitle);
         pageMethod.validateUrl("https://bookzone.ro/");

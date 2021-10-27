@@ -1,5 +1,6 @@
 package HelpMethod;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ElementMethod {
 
@@ -36,6 +38,21 @@ public class ElementMethod {
     public  void waitUntillElementVisibleAllElements(List<WebElement> element){
         new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOfAllElements(element));
     }
+    public void clickAcceptIfPresent(){
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
+        List<WebElement> elements = driver.findElements(By.cssSelector("div.cookies_buton a"));
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        if (elements.size()!= 0){
+            elements.get(0).click();
+        }
+    }
 
 
+    public void threadSleep() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

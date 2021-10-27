@@ -3,18 +3,13 @@ package Test;
 import Base.Base;
 import HelpMethod.ElementMethod;
 import HelpMethod.PageMethod;
-import HelpMethod.SigninMethod;
-import Pages.RegisterPage;
 import Pages.SigninPage;
 import Property.PropertyFile;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-
-import org.openqa.selenium.WebElement;
 
 
-public class Signin extends Base {
+public class SigninTest extends Base {
     public SigninPage signinPage;
     public ElementMethod elementMethod;
     public PropertyFile propertyFile;
