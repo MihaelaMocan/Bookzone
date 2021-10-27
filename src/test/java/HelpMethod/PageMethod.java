@@ -1,35 +1,41 @@
 package HelpMethod;
 
-import Pages.RegisterPage;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 
 public class PageMethod {
 
-    public WebDriver driver;
+    @FindBy(xpath = "//span[contains(text(), 'Toate cărțile')]")
+    private WebElement allBooksElement;
+
+    private WebDriver driver;
+    private ElementMethod elementMethod;
+
     public PageMethod(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
+        elementMethod = new ElementMethod(driver);
     }
+
 
     public PageMethod validateTitle(String expectedTitle) {
         String actualPageName = driver.getTitle();
-        Assert.assertTrue("Expected is not actual. ",actualPageName.contains(expectedTitle));
+        Assert.assertTrue("Expected is not actual. ", actualPageName.contains(expectedTitle));
         return this;
     }
-    public PageMethod validateUrl(String expectedUrl){
-        Assert.assertEquals("Url nu este conform asteptarilor. ", expectedUrl ,driver.getCurrentUrl()  );
-        return this;
-}
 
-    public void waitUntilElementVisible(By element) {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(element));
+    public PageMethod validateUrl(String expectedUrl) {
+        Assert.assertEquals("Url nu este conform asteptarilor. ", expectedUrl, driver.getCurrentUrl());
+        return this;
     }
-    public void continua() {
-        WebElement continueButton = driver.findElement(By.xpath("//a[@class='btn-details-back']"));
-        continueButton.click();
+
+    public PageMethod goToBooks() {
+        elementMethod.clickElement(allBooksElement);
+        return this;
     }
+
 }

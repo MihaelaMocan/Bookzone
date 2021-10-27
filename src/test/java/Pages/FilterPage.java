@@ -1,9 +1,8 @@
 package Pages;
 
-import HelpMethod.BookzoneNavigatePage;
 import HelpMethod.ElementMethod;
+import HelpMethod.PageMethod;
 import org.junit.Assert;
-import org.omg.CORBA.PRIVATE_MEMBER;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,8 +13,8 @@ import java.util.List;
 public class FilterPage {
 
     private WebDriver driver;
-    private BookzoneNavigatePage bookzoneNavigatePage;
     private ElementMethod elementMethod;
+    private PageMethod pageMethod;
 
     @FindBy(xpath = "//div[@class='number-group']/input[@type='number']")
     private List<WebElement> priceRangeElements;
@@ -37,12 +36,12 @@ public class FilterPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         elementMethod = new ElementMethod(driver);
-        bookzoneNavigatePage = new BookzoneNavigatePage(driver);
+        pageMethod = new PageMethod(driver);
     }
 
 
     public FilterPage goToFilter(){
-        bookzoneNavigatePage.goToBooks();
+        pageMethod.goToBooks();
         return this;
     }
 

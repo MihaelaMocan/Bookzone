@@ -68,13 +68,6 @@ public class AddToCartPage {
         return this;
     }
 
-    /**
-     * iterate over the first numberOfBooks buttons and click add
-     * Also produce a list of book title for which button was clicked and return it
-     *
-     * @param numberOfBooks to be added to cart
-     * @return list of titles of books that were added to cart
-     */
     public List<String> addMultipleBooks(Integer numberOfBooks) {
         elementMethod.waitUntillElementVisibleAllElements(moreBooksElemenets);
         List<String> titles = new ArrayList<>();
